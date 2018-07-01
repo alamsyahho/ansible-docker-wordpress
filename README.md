@@ -13,6 +13,8 @@ CentOS 7 Minimal Installation
     - hosts: wordpress-servers
       roles:
         - docker-wordpress
+      vars:
+        install_ansible_packages: true
       become: true
       become_method: sudo
 
