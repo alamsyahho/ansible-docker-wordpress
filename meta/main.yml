@@ -8,4 +8,7 @@ galaxy_info:
     - name: EL
       versions:
         - 7
-dependencies: []
+dependencies:
+- name: common
+  src: https://github.com/alamsyahho/ansible-common-package
+  version: v1.0.1
