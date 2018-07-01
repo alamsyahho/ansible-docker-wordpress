@@ -1,0 +1,20 @@
+---
+- name: pull docker wordpress image
+  docker_image:
+    name: wordpress
+    tag: "{{ wordpress_version }}"
+
+- name: start wordpress containers
+  docker_container:
+    name: "{{ wordpress_container_name }}"
+    image: "docker.io/wordpress:{{ wordpress_version }}"
+    state: started
+    env:
+      WORDPRESS_DB_HOST: mysql_host
+      WORDPRESS_DB_USER: "{{ mysql_user }}"
+      WORDPRESS_DB_PASSWORD: "{{ mysql_password }}"
+      WORDPRESS_DB_NAME: "{{ mysql_database }}"
+    links:
+      - "{{ mariadb_container_name }}:mysql_host"
+    volumes:
+      - wordpressData:/var/www/html

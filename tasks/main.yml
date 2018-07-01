@@ -1,0 +1,8 @@
+---
+- include_tasks: install.yml
+
+- include_tasks: mariadb.yml
+
+- include_tasks: wordpress.yml
+
+- include_tasks: nginx.yml
